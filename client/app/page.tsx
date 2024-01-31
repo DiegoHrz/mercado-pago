@@ -1,5 +1,5 @@
-import PasarelaPagos from "../components/pasarela-pagos/page";
-import PasarelaDonaciones from "../components/pasarela-donaciones/page";
+import PasarelaPagos from "../components/pasarela-pagos/pasarela-pagos";
+import PasarelaDonaciones from "../components/pasarela-donaciones/pasarela-donaciones";
 
 
 const Home =()=> {
