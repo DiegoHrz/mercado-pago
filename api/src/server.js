@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.routes.js');
 const cors = require("cors");
-const mercadopago = require('mercadopago')
 
 const server = express();
 
@@ -23,6 +22,7 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
+server.use(cors());
 
 server.use('/', routes);
 
