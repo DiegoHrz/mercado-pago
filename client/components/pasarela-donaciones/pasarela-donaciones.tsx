@@ -41,15 +41,15 @@ const PasarelaDonaciones:React.FC = () => {
         <form className="flex flex-col justify-center items-center gap-10 border">
           <label htmlFor="">
             <div>Nombre</div>
-            <input name="nombre" type="text" placeholder="opcional" />
+            <input name="nombre" type="text" className="text-black" placeholder="opcional" />
           </label>
           <label htmlFor="">
             <div>Valor</div>
-            <input name="valor" type="number" />
+            <input name="valor" type="number" className="text-black" />
           </label>
           <label htmlFor="">
             <div>Mensaje</div>
-            <input name="mensaje" type="text" placeholder="opcional" />
+            <input name="mensaje" type="text" placeholder="opcional" className="text-black"/>
           </label>
           <button className="border rounded-md" onClick={handleBuy}>
             compra
