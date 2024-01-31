@@ -49,3 +49,5 @@ app.post("/create_preference", async (req, res) => {
     });
   }
 });
+
+module.exports = index;

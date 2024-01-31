@@ -1,13 +1,13 @@
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const mercadopago = require("mercadopago");
+import express from "express";
+import app from "./index";
+import cors from "cors";
+import mercadopago from "mercadopago";
 
 app.use(express.json());
 app.use(cors());
 
 mercadopago.configure({
-  access_token: "your_acces_token",
+  access_token: "TEST-2408704255874219-013111-d1c4fea183c9314276dfa14ad16270d7-471190134",
 });
 
 app.get("/", function (req, res) {

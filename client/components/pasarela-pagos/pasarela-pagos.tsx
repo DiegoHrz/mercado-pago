@@ -8,7 +8,7 @@ const PasarelaPagos = () => {
   const [preferenceId, setPreferenceId] = useState(null);
 
   // Agrega credenciales
-  initMercadoPago("YOUR_PUBLIC_KEY", {
+  initMercadoPago("TEST-7e80182d-c7d7-40b4-ad55-fa64b6683f46", {
     locale: "es-PE",
   });
 
