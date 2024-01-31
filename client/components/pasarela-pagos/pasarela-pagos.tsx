@@ -17,14 +17,14 @@ const PasarelaPagos = () => {
       const response = await axios.post(
         "http://localhost:3000/create_preference",
         {
+          id: "servicio",
           title: "Retiro Espiritual",
           quantity: 1,
-          price: 100,
+          unit_price: 100,
         }
       );
 
       const { id } = response.data;
-      console.log(id);
       return id;
     } catch (error) {
       console.log(error);
@@ -38,7 +38,6 @@ const PasarelaPagos = () => {
       setPreferenceId(id);
     }
   };
-
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

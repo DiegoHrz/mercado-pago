@@ -4,39 +4,36 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
 import { useState } from "react";
 
-
-const PasarelaDonaciones =()=> {
-  const [preferenceId, setPrefrenceId] = useState(null)
-
+const PasarelaDonaciones:React.FC = () => {
+  const [preferenceId, setPrefrenceId] = useState<any | null>(null);
 
   // Agrega credenciales
   initMercadoPago("TEST-7e80182d-c7d7-40b4-ad55-fa64b6683f46", {
     locale: "es-PE",
   });
 
-
-  const createPreference = async (formData:FormData) =>{
+  const createPreference = async (formData: FormData) => {
     try {
-      const response = await axios.post('http://localhost:3000/create_preference',{
-        id:'donacion',
-        title:formData.get('message') as string,
-        quantity:'1',
-        unit_price: Number(formData.get('valor')),
-      })
+      const response = await axios.post(
+        "http://localhost:3000/create_preference",
+        {
+          id: "donacion",
+          title: formData.get("message") as string,
+          quantity: "1",
+          unit_price: Number(formData.get("valor")),
+        }
+      );
 
-      const {id} = response.data
+      const { id } = response.data;
       return id;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
-
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) =>{
-    e.preventDefault()
-  }
-
+  const handleBuy = async(e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -54,16 +51,18 @@ const PasarelaDonaciones =()=> {
             <div>Mensaje</div>
             <input name="mensaje" type="text" placeholder="opcional" />
           </label>
-          <button className="border rounded-md" onClick={handleClick}>compra</button>
+          <button className="border rounded-md" onClick={handleBuy}>
+            compra
+          </button>
 
           <Wallet
-            initialization={{ preferenceId: "<PREFERENCE_ID>" }}
+            initialization={{ preferenceId: preferenceId }}
             customization={{ texts: { valueProp: "smart_option" } }}
           />
         </form>
       </div>
     </main>
   );
-}
+};
 
 export default PasarelaDonaciones;
