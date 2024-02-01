@@ -15,7 +15,7 @@ const PasarelaPagos = () => {
   const createPreference = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/create_preference",
+        "http://localhost:3001/create_preference",
         {
           id: "servicio",
           title: "Retiro Espiritual",

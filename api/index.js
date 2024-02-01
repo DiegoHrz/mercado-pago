@@ -1,7 +1,6 @@
-const server = require('./src/server.js');
-// Syncing all the models at once.
+const app = require("./src/app");
+const PORT = process.env.PORT || 3001;
 
-    server.listen(3001, () => {
-      console.log('%s listening at 3001'); // eslint-disable-line no-console
-    });
-
+app.listen(PORT, () =>
+	console.log(`Server listening on http://localhost:${PORT}`)
+);

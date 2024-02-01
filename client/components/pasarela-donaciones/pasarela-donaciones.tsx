@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const PasarelaDonaciones:React.FC = () => {
-  const [preferenceId, setPrefrenceId] = useState<any | null>(null);
+  const [preferenceId, setPreferenceId] = useState<any | null>(null);
 
   // Agrega credenciales
   initMercadoPago("TEST-7e80182d-c7d7-40b4-ad55-fa64b6683f46", {
@@ -15,7 +15,7 @@ const PasarelaDonaciones:React.FC = () => {
   const createPreference = async (formData: FormData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/create_preference",
+        "http://localhost:3001/create_preference",
         {
           id: "donacion",
           title: formData.get("message") as string,
