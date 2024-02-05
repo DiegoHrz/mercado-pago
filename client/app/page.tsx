@@ -1,8 +1,8 @@
 "use client";
+import Image from "next/image";
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import Next from "../public/next.svg";
 import axios from "axios";
-import Image from "next/image";
 
 interface FormData {
   programId: number;
@@ -12,7 +12,7 @@ interface FormData {
   // Agrega más claves según tus campos de formulario
 }
 
-export default function Home() {
+const DonacionesRecurrentesPage: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     programId: 0,
     amount: 0,
@@ -21,27 +21,29 @@ export default function Home() {
   });
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement >
   ) => {
     const value =
-      (e.target.name === "programId" || e.target.name === "amount") &&
-      e.target.value !== ""
-        ? +e.target.value
-        : e.target.value;
-
+    (e.target.name === "programId" || e.target.name === "amount") &&
+    e.target.value !== ""
+      ? +e.target.value
+      : e.target.value;
+  
     setFormData({
       ...formData,
       [e.target.name]: value,
     });
   };
 
-  const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>): void => {
+  const handleChangeSelect = (
+    e: ChangeEvent<HTMLSelectElement>
+  ): void => {
     const value =
       (e.target.name === "programId" || e.target.name === "amount") &&
       e.target.value !== ""
         ? +e.target.value
         : e.target.value;
-
+  
     setFormData({
       ...formData,
       [e.target.name]: value,
@@ -52,16 +54,18 @@ export default function Home() {
     e.preventDefault();
     console.log(formData);
     try {
-      const response = await axios.post<{
-        mensaje: string;
-        init_point: string;
-      }>("http://localhost:3000/payments", formData);
-      const data = response.data;
-      window.location.href = data.init_point;
+      const response = await axios.post<{ mensaje: string, init_point: string }>(
+        "http://localhost:3000/payments",
+        formData
+      );
+        const data =  response.data
+        window.location.href = data.init_point
+
     } catch (error: any) {
       console.error("Error al enviar datos al servidor:", error.message);
     }
   };
+
   return (
     <div className="w-screen h-[80vh]  flex justify-center items-center">
       <div className="w-11/12 h-5/6 border border-blue-400 rounded-2xl shadow-2xl flex justify-center">
@@ -86,7 +90,7 @@ export default function Home() {
                           name="programId"
                           onChange={handleChangeSelect}
                         >
-                          <option value="" selected hidden>
+                          <option value=""  selected hidden>
                             Selecciona un proyecto
                           </option>
                           <option value="1" id="1">
@@ -103,7 +107,7 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <div className="w-full h-96 overflow-auto  bg-blue-50 rounded-lg p-4 scrollbar">
+                    <div className="w-full overflow-auto  bg-blue-50 rounded-lg p-4 scrollbar">
                       Descripción de la donación Aca tengo que agregar el texto
                       de la descripcion de la donacion.
                       {/* Agrega más contenido según sea necesario y tambien hacer un overflow = scroll */}
@@ -167,4 +171,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default DonacionesRecurrentesPage;

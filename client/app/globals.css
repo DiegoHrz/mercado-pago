@@ -21,3 +21,21 @@
     text-wrap: balance;
   }
 }
+
+
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+  height: 90px;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
+  height: 50%;
+  margin-right: 4px;
+}
